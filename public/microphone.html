@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Microphone</h1>
+    <button id='start'>Start</button>
+    <script>
+        const websocket = new WebSocket(`wss://${window.location.hostname}/websocket`);
+
+
+        const recognition = new webkitSpeechRecognition();
+        const start = document.getElementById('start');
+        recognition.interimResults = true;
+
+        start.addEventListener('click', event=>{
+            recognition.start();
+        })
+
+        recognition.onresult = (event) =>{
+            console.log(event.results[0][0].transcript)
+            websocket.send(event.results[0][0].transcript)
+        }
+     
+    </script>
+
+    
+</body>
+</html>
