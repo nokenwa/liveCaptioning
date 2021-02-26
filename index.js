@@ -19,6 +19,10 @@ fastify.get('/microphone', (requrest, reply) => {
     reply.sendFile('microphone.html')
 })
 
+fastify.post('/stay-alive', (request, reply) => {
+    reply.send(`I'm alive`)
+})
+
 fastify.get('/websocket', { websocket: true }, (connection, req) => {
     
     connection.socket.on('message', message => {

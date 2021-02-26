@@ -11,13 +11,15 @@
     <script>
         const websocket = new WebSocket(`wss://${window.location.hostname}/websocket`);
         const captions = document.getElementById('captions')
-        const captionThreshold = 50;
+        const captionThreshold = 300;
        websocket.onmessage = message =>{
         let captionText = message.data.slice(message.data.indexOf(' ', Math.min(message.data.length - captionThreshold)));
 
         captions.innerText = '>>' + captionText;
        }
-     
+       stayalive = setInterval( ()=>{
+        fetch('/stay-alive');
+       } , 50000);
     </script>
 
     
