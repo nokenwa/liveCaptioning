@@ -13,7 +13,7 @@
         const captions = document.getElementById('captions')
         const captionThreshold = 50;
        websocket.onmessage = message =>{
-        let captionText = message.data.slice(message.data.indexOf(' ', Math.min(message.data.length - caption.captionThreshold)),0);
+        let captionText = message.data.slice(message.data.indexOf(' ', Math.min(message.data.length - captionThreshold)));
 
         captions.innerText = '>>' + captionText;
        }
