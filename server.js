@@ -1,5 +1,3 @@
-
-require('dotenv').config();
 const path = require('path');
 const fastify = require('fastify')();
 
@@ -9,7 +7,7 @@ fastify.register(require('fastify-static'), {
 });
 fastify.register(require('fastify-websocket'));
 
-fasity.get('/', (request, reply) => {
+fastify.get('/', (request, reply) => {
    reply.send('Hiya, Your Live Captioner is ready.') 
 })
 
