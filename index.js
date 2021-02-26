@@ -1,6 +1,5 @@
 const path = require('path');
 const fastify = require('fastify')();
-const PORT = process.env.PORT || 5000;
 
 fastify.register(require('fastify-static'), {
     root: path.join(__dirname, 'public'),
@@ -29,10 +28,10 @@ fastify.get('/websocket', { websocket: true }, (connection, req) => {
     });
   })
 
-fastify.listen(PORT, (err) => {
+fastify.listen((process.env.PORT || 5000),'0.0.0.0', (err) => {
     if (err) {
         fastify.log.error(err)
         process.exit(1)
     }
-    fastify.log.info('server listening on Port 3000')
+    fastify.log.info('server listening')
 });
