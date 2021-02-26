@@ -15,6 +15,7 @@
 
         const recognition = new webkitSpeechRecognition();
         const start = document.getElementById('start');
+        recognition.lang = 'en_GB'
         recognition.continuous = true;
         recognition.interimResults = true;
         recognition.start();

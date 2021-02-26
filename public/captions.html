@@ -7,13 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <p id='captions' style="color:white; font-size: 3em"></p>
+    <p id='captions' style="color:white; font-size: 3rem"></p>
     <script>
         const websocket = new WebSocket(`wss://${window.location.hostname}/websocket`);
         const captions = document.getElementById('captions')
-
+        const captionThreshold = 50;
        websocket.onmessage = message =>{
-        captions.innerText = '>> ' + message.data;
+        let captionText = message.data.slice(string.indexOf(' ', Math.min(message.data.length - caption.captionThreshold),0));
+
+        captions.innerText = '>>' + captionText;
        }
      
     </script>
