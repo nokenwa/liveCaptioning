@@ -9,6 +9,11 @@ fastify.register(require('fastify-static'), {
 });
 fastify.register(require('fastify-websocket'));
 
+fasity.get('/', (request, reply) => {
+   reply.send('Hiya, Your Live Captioner is ready.') 
+})
+
+
 fastify.get('/livecaptions', (request, reply) => {
     reply.sendFile('captions.html')
 });
