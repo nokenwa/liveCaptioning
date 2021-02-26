@@ -7,14 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Captions</h1>
-    <p id='captions'></p>
+    <p id='captions' style="color:white; font-size: larger;"></p>
     <script>
         const websocket = new WebSocket(`wss://${window.location.hostname}/websocket`);
         const captions = document.getElementById('captions')
 
        websocket.onmessage = message =>{
-        captions.innerText = message.data;
+        captions.innerText = '>> ' + message.data;
        }
      
     </script>
